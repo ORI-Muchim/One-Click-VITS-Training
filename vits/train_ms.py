@@ -13,6 +13,7 @@ import torch.multiprocessing as mp
 import torch.distributed as dist
 from torch.nn.parallel import DistributedDataParallel as DDP
 from torch.cuda.amp import autocast, GradScaler
+import platform
 
 import librosa
 import logging
@@ -65,7 +66,11 @@ def run(rank, n_gpus, hps):
     writer = SummaryWriter(log_dir=hps.model_dir)
     writer_eval = SummaryWriter(log_dir=os.path.join(hps.model_dir, "eval"))
 
-  dist.init_process_group(backend='gloo', init_method='env://', world_size=n_gpus, rank=rank)
+    if platform.system() == 'Windows':
+        dist.init_process_group(backend='gloo', init_method='env://', world_size=n_gpus, rank=rank)
+    else:
+        dist.init_process_group(backend='nccl', init_method='env://', world_size=n_gpus, rank=rank)
+
   torch.manual_seed(hps.train.seed)
   torch.cuda.set_device(rank)
 
