@@ -46,7 +46,9 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. Work In Progress!
+```sh
+python main.py {language} {model_name} {sample_rate}
+```
 
 ---
 
