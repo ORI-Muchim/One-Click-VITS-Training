@@ -20,3 +20,4 @@ jieba==0.42.1
 protobuf==3.19.0
 cn2an==0.5.17
 ipython
+g2pk2
