@@ -1,4 +1,4 @@
-# One-Click-VITS-Training
+# One-Click-VITS-Training(WIP)
 
 This is your one-stop solution to train the complete process of VITS, from pre-processing of audio data files, transcript creation using OpenAI's Whisper, text cleaning, config.json file creation, to the final step of model training.
 
