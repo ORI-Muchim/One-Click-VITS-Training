@@ -18,7 +18,6 @@ This is your one-stop solution to train the complete process of VITS, from pre-p
 
 * You have a Windows/Linux/Mac machine with a minimum of 8GB RAM.
 * GPU must have at least 16GB of VRAM.
-
 * Python >= 3.8
 * Install PyTorch.
 ```sh
