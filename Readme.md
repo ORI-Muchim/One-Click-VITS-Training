@@ -1,6 +1,6 @@
 - # One-Click-VITS-Training (Work in Progress)
 
-This toolkit serves as a comprehensive guide for training the VITS model. The process covers everything from preprocessing audio data files, creating transcripts using OpenAI's Whisper, cleaning text, creating a config.json file, and ultimately training the model.
+This repository allows you to complete the entire process of VITS (Data Preprocessing + Whisper ASR + Text Preprocessing + Modification config.json + Training, Inference) with one click.
 
 ## Table of Contents 
 - [Prerequisites](#prerequisites)
@@ -63,13 +63,17 @@ python main.py {language} {model_name} {sample_rate}
 ```
 
 ---
-## Model Inference
+## Inference
 
 After the model has been trained, you can generate predictions by using the following command, replacing {model_name} and {model_step} with your respective values:
 
 ```sh
 python ./vits/inferencems.py {model_name} {model_step}
 ```
+
+Or check ./vits/inference.ipynb.
+
+
 
 ---
 ## References
