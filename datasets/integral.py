@@ -469,7 +469,7 @@ def vits_preproess_code(arg1, arg2):
     else:
         return
     
-    script_path = "./vits/preprocess.py"
+    script_path = "../vits/preprocess.py"
 
     text_index = "2"
     filelists_train = f'./{arg2}_train.txt'
