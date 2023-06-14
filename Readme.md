@@ -102,7 +102,7 @@ Or check ./vits/inference.ipynb.
 
 ## Changes
 
-In the repository of [CjangCjengh/vits] (https://github.com/CjangCjengh/vits.git) , I made some modifications to the Korean text cleaning method. The other cleaning process is the same by posting it on the CjangCjengh repository, but the data cleaning method has been changed as Korean pronounced.
+In the repository of [CjangCjengh/vits](https://github.com/CjangCjengh/vits.git) , I made some modifications to the Korean text cleaning method. The other cleaning process is the same by posting it on the CjangCjengh repository, but the data cleaning method has been changed as Korean pronounced.
 
 ---
 ## References
