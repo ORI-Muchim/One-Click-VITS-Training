@@ -8,6 +8,7 @@ This repository allows you to complete the entire process of VITS (Data Preproce
 - [Prepare_Datasets](#Prepare_Datasets)
 - [Usage](#usage)
 - [Inference](#inference)
+- [Changes](#Changes)
 - [Reference](#Reference)
 
 ## Prerequisites
@@ -58,8 +59,7 @@ pip install -r requirements.txt
 
 ## Prepare_Datasets
 
-Place the audio files as follows.
-.mp3 or .wav files are okay.
+Place the audio files as follows.  .mp3 or .wav files are okay.
 
 ```
 One-Click-VITS-Training
@@ -98,7 +98,11 @@ python ./vits/inferencems.py {model_name} {model_step}
 
 Or check ./vits/inference.ipynb.
 
+---
 
+## Changes
+
+In the repository of [CjangCjengh/vits] (https://github.com/CjangCjengh/vits.git) , I made some modifications to the Korean text cleaning method. The other cleaning process is the same by posting it on the CjangCjengh repository, but the data cleaning method has been changed as Korean pronounced.
 
 ---
 ## References
