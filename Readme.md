@@ -1,68 +1,79 @@
-# One-Click-VITS-Training(WIP)
+- # One-Click-VITS-Training (Work in Progress)
 
-This is your one-stop solution to train the complete process of VITS, from pre-processing of audio data files, transcript creation using OpenAI's Whisper, text cleaning, config.json file creation, to the final step of model training.
+This toolkit serves as a comprehensive guide for training the VITS model. The process covers everything from preprocessing audio data files, creating transcripts using OpenAI's Whisper, cleaning text, creating a config.json file, and ultimately training the model.
 
----
-
-## Table of Contents
-
+## Table of Contents 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Inference](#inference)
 - [Reference](#Reference)
 
----
-
 ## Prerequisites
+- A Windows/Linux system with a minimum of 8GB RAM.
+- A GPU with at least 16GB of VRAM.
+- Python >= 3.8
+- Anaconda installed.
+- PyTorch installed.
 
-* You have a Windows/Linux/Mac machine with a minimum of 8GB RAM.
-* GPU must have at least 16GB of VRAM.
-* Python >= 3.8
-* Install PyTorch.
 ```sh
 pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
 
 ---
 
-## Installation
+## Installation 
+1. **Create an Anaconda environment:**
 
-Clone this repository to your local machine and install the necessary requirements:
+```sh
+conda create -n one-click-vits python=3.8
+```
+
+2. **Activate the environment:**
+
+```sh
+conda activate one-click-vits
+```
+
+3. **Clone this repository to your local machine:**
 
 ```sh
 git clone https://github.com/ORI-Muchim/One-Click-VITS-Training.git
 ```
 
+4. **Navigate to the cloned directory:**
+
 ```sh
 cd One-Click-VITS-Training
 ```
+
+5. **Install the necessary dependencies:**
 
 ```sh
 pip install -r requirements.txt
 ```
 
 ---
-
 ## Usage
+
+To start training, use the following command, replacing {language}, {model_name}, and {sample_rate} with your respective values:
 
 ```sh
 python main.py {language} {model_name} {sample_rate}
 ```
 
 ---
+## Model Inference
 
-## Inference
+After the model has been trained, you can generate predictions by using the following command, replacing {model_name} and {model_step} with your respective values:
 
 ```sh
 python ./vits/inferencems.py {model_name} {model_step}
 ```
 
 ---
+## References
 
-## Reference
-
-- https://github.com/jaywalnut310/vits.git
-- https://github.com/CjangCjengh/vits.git
-
----
+For more information, please refer to the original repositories: 
+- [jaywalnut310/vits](https://github.com/jaywalnut310/vits.git) 
+- [CjangCjengh/vits](https://github.com/CjangCjengh/vits.git)

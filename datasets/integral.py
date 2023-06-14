@@ -483,6 +483,39 @@ def vits_preproess_code(arg1, arg2):
     print("stderr:", result.stderr)
 
 
+
+def write_symbols(file_path, language):
+    if os.path.exists(file_path):
+        os.remove(file_path)
+
+    with open(file_path, 'w') as f:
+        if language == 'ko':
+            f.write("# korean_cleaners\n")
+            f.write("_pad        = '_'\n")
+            f.write("_punctuation = ',.!?…~'\n")
+            f.write("_letters = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㄲㄸㅃㅆㅉㅏㅓㅗㅜㅡㅣㅐㅔ '\n")
+        elif language == 'ja':
+            f.write("# japanese_cleaners2\n")
+            f.write("_pad        = '_'\n")
+            f.write("_punctuation = ',.!?-~…'\n")
+            f.write("_letters = 'AEINOQUabdefghijkmnoprstuvwyzʃʧʦ↓↑ '\n")
+        elif language == 'en' and language == 'zh':
+            f.write("# cjke_cleaners2")
+            f.write("_pad        = '_'\n")
+            f.write("_punctuation = ',.!?-~…'\n")
+            f.write("_letters = 'NQabdefghijklmnopstuvwxyzɑæʃʑçɯɪɔɛɹðəɫɥɸʊɾʒθβŋɦ⁼ʰ`^#*=ˈˌ→↓↑ '\n")
+        else:
+            print(f"Unsupported language: {language}")
+            return
+
+        f.write("# Export all symbols:\n")
+        f.write("symbols = [_pad] + list(_punctuation) + list(_letters)\n")
+
+        f.write("# Special symbol ids\n")
+        f.write("SPACE_ID = symbols.index(' ')\n")
+
+
+
 def rename_config_json(arg2):
     old_name = "config.json"
     new_name = f"{arg2}.json"
@@ -496,7 +529,7 @@ def rename_config_json(arg2):
 
 def main():
 
-    print("Running Audio Convertion(mp3 to wav, 44.1khz)")
+    print("Running Audio Convertion(.mp3 to .wav)")
     time.sleep(1.5)
     preprocessing_code(sys.argv[3])
     print("All .mp3 files have been converted to .wav files.\n")
@@ -540,6 +573,12 @@ def main():
     time.sleep(1.5)
     rename_config_json(sys.argv[2])
     print("Successfully renamed config.json.\n")
+
+    print("Editing ../vits/symbols.py...")
+    time.sleep(1.5)
+    write_symbols("../vits/text/symbols.py", sys.argv[1])
+    print("Sucessfully edited ../vits/symbols.py.\n")
+
 
     print("Measuring Total Datasets Duration...")
     time.sleep(1.5)
