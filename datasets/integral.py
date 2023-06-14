@@ -488,22 +488,22 @@ def write_symbols(file_path, language):
     if os.path.exists(file_path):
         os.remove(file_path)
 
-    with open(file_path, 'w') as f:
+    with open(file_path, 'w', encoding='utf-8') as f:
         if language == 'ko':
             f.write("# korean_cleaners\n")
             f.write("_pad        = '_'\n")
             f.write("_punctuation = ',.!?…~'\n")
-            f.write("_letters = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㄲㄸㅃㅆㅉㅏㅓㅗㅜㅡㅣㅐㅔ '\n")
+            f.write("_letters = 'ㄱㄴㄷㄹㅁㅂㅅㅇㅈㅊㅋㅌㅍㅎㄲㄸㅃㅆㅉㅏㅓㅗㅜㅡㅣㅐㅔ '\n\n\n")
         elif language == 'ja':
             f.write("# japanese_cleaners2\n")
             f.write("_pad        = '_'\n")
             f.write("_punctuation = ',.!?-~…'\n")
-            f.write("_letters = 'AEINOQUabdefghijkmnoprstuvwyzʃʧʦ↓↑ '\n")
+            f.write("_letters = 'AEINOQUabdefghijkmnoprstuvwyzʃʧʦ↓↑ '\n\n\n")
         elif language == 'en' and language == 'zh':
             f.write("# cjke_cleaners2")
             f.write("_pad        = '_'\n")
             f.write("_punctuation = ',.!?-~…'\n")
-            f.write("_letters = 'NQabdefghijklmnopstuvwxyzɑæʃʑçɯɪɔɛɹðəɫɥɸʊɾʒθβŋɦ⁼ʰ`^#*=ˈˌ→↓↑ '\n")
+            f.write("_letters = 'NQabdefghijklmnopstuvwxyzɑæʃʑçɯɪɔɛɹðəɫɥɸʊɾʒθβŋɦ⁼ʰ`^#*=ˈˌ→↓↑ '\n\n\n")
         else:
             print(f"Unsupported language: {language}")
             return
@@ -578,7 +578,6 @@ def main():
     time.sleep(1.5)
     write_symbols("../vits/text/symbols.py", sys.argv[1])
     print("Sucessfully edited ../vits/symbols.py.\n")
-
 
     print("Measuring Total Datasets Duration...")
     time.sleep(1.5)

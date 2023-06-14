@@ -1,19 +1,18 @@
 faster-whisper @ https://github.com/guillaumekln/faster-whisper/archive/refs/heads/master.tar.gz
-numpy==1.24.3
+numpy
+cmake
 tqdm==4.65.0
 scipy==1.10.1
 langdetect==1.0.9
 Cython==0.29.21
 librosa==0.8.0
 matplotlib==3.3.1
-numpy==1.21.6
 phonemizer==2.2.1
-scipy==1.5.2
 tensorboard
-torch==1.6.0
-torchvision==0.7.0
+#torch==1.6.0
+#torchvision==0.7.0
 Unidecode==1.1.1
-pyopenjtalk==0.2.0
+pyopenjtalk
 jamo==0.4.1
 pypinyin==0.44.0
 jieba==0.42.1
