@@ -59,7 +59,9 @@ pip install -r requirements.txt
 
 ## Prepare_Datasets
 
-Place the audio files as follows.  .mp3 or .wav files are okay.
+Place the audio files as follows. 
+
+.mp3 or .wav files are okay.
 
 ```
 One-Click-VITS-Training
