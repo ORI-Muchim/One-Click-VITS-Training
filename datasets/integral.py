@@ -308,7 +308,7 @@ def third_code(arg1, arg2):
 
         with open(output_file, 'w', encoding='utf-8') as file:
             for line in selected_lines:
-                modified_line = "../datasets" + line[1:].replace("\\", "/")
+                modified_line = "." + line[1:].replace("\\", "/")
                 file.write(modified_line)
 
 
