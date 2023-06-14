@@ -272,10 +272,11 @@ def third_code(arg1, arg2):
                         continue
 
                     else:
-                        print(f"{wav_folder}/{wav_file}|{speaker_id}|{text}")
-                        f.writelines(f"{wav_folder}/{wav_file}|{speaker_id}|{text}\n")
+                        modified_path = "datasets" + f"{wav_folder[1:]}/{wav_file}"
+                        print(f"{modified_path}|{speaker_id}|{text}")
+                        f.writelines(f"{modified_path}|{speaker_id}|{text}\n")
                         with open(os.path.join(top_folder, f"{arg2}_train.txt"), "a", encoding='utf-8') as all_transcript_file:
-                            all_transcript_file.writelines(f"{wav_folder}/{wav_file}|{speaker_id}|{text}\n")
+                            all_transcript_file.writelines(f"{modified_path}|{speaker_id}|{text}\n")
 
     def main():
         top_folder = "./"
@@ -306,7 +307,8 @@ def third_code(arg1, arg2):
 
         with open(output_file, 'w', encoding='utf-8') as file:
             for line in selected_lines:
-                file.write(line)
+                modified_line = "datasets" + line[1:]
+                file.write(modified_line)
 
     main()
 
