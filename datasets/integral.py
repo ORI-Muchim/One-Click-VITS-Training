@@ -258,6 +258,7 @@ def third_code(arg1, arg2):
                 if wav_file.endswith(".wav"):
                     file_path = os.path.join(wav_folder, wav_file)
                     with open(file_path, "rb") as audio_file:
+                        # replaced model.transcribe(file_path) with the provided transcribe method
                         segments, info = model.transcribe(
                             file_path,
                             vad_filter=True,
@@ -272,7 +273,7 @@ def third_code(arg1, arg2):
                         continue
 
                     else:
-                        modified_path = os.path.join("./datasets", f"{wav_folder[1:]}", wav_file).replace("\\", "/")
+                        modified_path = "./datasets" + f"{wav_folder[1:]}/{wav_file}".replace("\\", "/")
                         print(f"{modified_path}|{speaker_id}|{text}")
                         f.writelines(f"{modified_path}|{speaker_id}|{text}\n")
                         with open(os.path.join(top_folder, f"{arg2}_train.txt"), "a", encoding='utf-8') as all_transcript_file:
@@ -307,7 +308,7 @@ def third_code(arg1, arg2):
 
         with open(output_file, 'w', encoding='utf-8') as file:
             for line in selected_lines:
-                modified_line = os.path.join("./datasets", line[1:]).replace("\\", "/")
+                modified_line = "./datasets" + line[1:].replace("\\", "/")
                 file.write(modified_line)
 
     main()
