@@ -412,8 +412,8 @@ def sixth_code(arg1, arg2):
     with open("config.json", "r", encoding="utf-8") as file:
         config = json.load(file)
 
-    config["data"]["training_files"] = f"../{arg2}_datasets/{arg2}_train.txt.cleaned"
-    config["data"]["validation_files"] = f"../{arg2}_datasets/{arg2}_val.txt.cleaned"
+    config["data"]["training_files"] = f"../datasets/{arg2}_train.txt.cleaned"
+    config["data"]["validation_files"] = f"../datasets/{arg2}_val.txt.cleaned"
 
     wav_files = []
     for root, _, files in os.walk('.'):
@@ -456,8 +456,6 @@ def sixth_code(arg1, arg2):
 
 
 def vits_preproess_code(arg1, arg2):
-    import subprocess
-
     if arg1 == "ko":
         text_cleaners = "korean_cleaners"
     elif arg1 == "ja":
@@ -476,11 +474,16 @@ def vits_preproess_code(arg1, arg2):
     filelists_val = f'./{arg2}_val.txt'
     arg1 = text_cleaners
 
-    result = subprocess.run(["python", script_path, "--text_index", text_index, "--filelists", filelists_train, filelists_val, "--text_cleaners", arg1], capture_output=True, text=True)
+    process = subprocess.Popen(["python", script_path, "--text_index", text_index, "--filelists", filelists_train, filelists_val, "--text_cleaners", arg1], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
 
-    print("Return code:", result.returncode)
-    print("stdout:", result.stdout)
-    print("stderr:", result.stderr)
+    while True:
+        output = process.stdout.readline()
+        if output == '' and process.poll() is not None:
+            break
+        if output:
+            print(output.strip())
+
+    return process.poll()
 
 
 
