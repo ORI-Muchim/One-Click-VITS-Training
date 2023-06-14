@@ -5,6 +5,7 @@ This repository allows you to complete the entire process of VITS (Data Preproce
 ## Table of Contents 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
+- [Prepare_Datasets](#Prepare_Datasets)
 - [Usage](#usage)
 - [Inference](#inference)
 - [Reference](#Reference)
@@ -54,6 +55,30 @@ pip install -r requirements.txt
 ```
 
 ---
+
+## Prepare_Datasets
+
+Place the audio files as follows.
+.mp3 or .wav files are okay.
+
+```
+One-Click-VITS-Training
+├────datasets
+│       ├───speaker0
+│       │   ├────1.mp3
+│       │   └────1.wav
+│       └───speaker1
+│       │    ├───1.mp3
+│       │    └───1.wav
+│       └integral.py
+│
+├────vits
+├────Readme.md
+└────requirements.txt
+```
+
+---
+
 ## Usage
 
 To start training, use the following command, replacing {language}, {model_name}, and {sample_rate} with your respective values:
