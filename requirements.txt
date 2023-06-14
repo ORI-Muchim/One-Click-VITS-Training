@@ -22,3 +22,4 @@ ipython
 g2pk2
 ko_pron
 inflect
+eng_to_ipa
