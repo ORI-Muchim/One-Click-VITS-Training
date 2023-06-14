@@ -66,11 +66,7 @@ def run(rank, n_gpus, hps):
     writer = SummaryWriter(log_dir=hps.model_dir)
     writer_eval = SummaryWriter(log_dir=os.path.join(hps.model_dir, "eval"))
 
-    if platform.system() == 'Windows':
-        dist.init_process_group(backend='gloo', init_method='env://', world_size=n_gpus, rank=rank)
-    else:
-        dist.init_process_group(backend='nccl', init_method='env://', world_size=n_gpus, rank=rank)
-
+  dist.init_process_group(backend='gloo', init_method='env://', world_size=n_gpus, rank=rank)
   torch.manual_seed(hps.train.seed)
   torch.cuda.set_device(rank)
 
