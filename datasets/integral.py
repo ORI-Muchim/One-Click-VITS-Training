@@ -273,7 +273,7 @@ def third_code(arg1, arg2):
                         continue
 
                     else:
-                        modified_path = "./datasets" + f"{wav_folder[1:]}/{wav_file}".replace("\\", "/")
+                        modified_path = "../datasets" + f"{wav_folder[1:]}/{wav_file}".replace("\\", "/")
                         print(f"{modified_path}|{speaker_id}|{text}")
                         f.writelines(f"{modified_path}|{speaker_id}|{text}\n")
                         with open(os.path.join(top_folder, f"{arg2}_train.txt"), "a", encoding='utf-8') as all_transcript_file:
