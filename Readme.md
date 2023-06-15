@@ -1,6 +1,6 @@
 - # One-Click-VITS-Training
 
-This repository allows you to complete the entire process of VITS (Data Preprocessing + Whisper ASR + Text Preprocessing + Modification config.json + Training, Inference) with one click.
+This tool allows you to complete the entire process of VITS (Data Preprocessing + Whisper ASR + Text Preprocessing + Modification config.json + Training, Inference) with ONE-CLICK!
 
 ## Table of Contents 
 - [Prerequisites](#prerequisites)
