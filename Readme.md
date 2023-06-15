@@ -80,6 +80,8 @@ One-Click-VITS-Training
 └────requirements.txt
 ```
 
+This is just an example, and it's okay to add more speakers.
+
 ---
 
 ## Usage
