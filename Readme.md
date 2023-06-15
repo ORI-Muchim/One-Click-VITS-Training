@@ -14,8 +14,8 @@ This tool allows you to complete the entire process of VITS (Data Preprocessing 
 - [Reference](#Reference)
 
 ## Prerequisites
-- A Windows/Linux system with a minimum of 8GB RAM.
-- A GPU with at least 16GB of VRAM.
+- A Windows/Linux system with a minimum of 16GB RAM.
+- A GPU with at least 12GB of VRAM.
 - Python >= 3.8
 - Anaconda installed.
 - PyTorch installed.
@@ -92,6 +92,12 @@ To start this tool, use the following command, replacing {language}, {model_name
 
 ```sh
 python main.py {language} {model_name} {sample_rate}
+```
+
+For those with low specifications, please use this code:
+
+```sh
+python main_low.py {language} {model_name} {sample_rate}
 ```
 
 If the data configuration is complete and you want to resume training, enter this code:
