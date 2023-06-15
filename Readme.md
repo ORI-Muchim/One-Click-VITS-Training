@@ -2,6 +2,8 @@
 
 This tool allows you to complete the entire process of VITS (Data Preprocessing + Whisper ASR + Text Preprocessing + Modification config.json + Training, Inference) with ONE-CLICK!
 
+
+
 ## Table of Contents 
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -118,7 +120,7 @@ In the repository of [CjangCjengh/vits](https://github.com/CjangCjengh/vits.git)
 ---
 ## References
 
-For more information, please refer to the original repositories: 
+For more information, please refer to the following repositories: 
 - [jaywalnut310/vits](https://github.com/jaywalnut310/vits.git) 
 - [CjangCjengh/vits](https://github.com/CjangCjengh/vits.git)
 - [g2pk](https://github.com/Kyubyong/g2pK)
