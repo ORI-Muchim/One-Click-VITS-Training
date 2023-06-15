@@ -121,5 +121,5 @@ In the repository of [CjangCjengh/vits](https://github.com/CjangCjengh/vits.git)
 For more information, please refer to the original repositories: 
 - [jaywalnut310/vits](https://github.com/jaywalnut310/vits.git) 
 - [CjangCjengh/vits](https://github.com/CjangCjengh/vits.git)
-- [g2pk2](https://github.com/tenebo/g2pk2)
 - [g2pk](https://github.com/Kyubyong/g2pK)
+- [g2pk2](https://github.com/tenebo/g2pk2)
