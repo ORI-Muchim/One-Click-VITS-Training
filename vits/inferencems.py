@@ -24,7 +24,7 @@ def get_text(text, hps):
     text_norm = torch.LongTensor(text_norm)
     return text_norm
 
-hps = utils.get_hparams_from_file(f"../datasets/{sys.argv[1]}.json")
+hps = utils.get_hparams_from_file(f"./datasets/{sys.argv[1]}.json")
 
 net_g = SynthesizerTrn(
     len(symbols),
@@ -34,12 +34,14 @@ net_g = SynthesizerTrn(
     **hps.model).cuda()
 _ = net_g.eval()
 
-_ = utils.load_checkpoint(f"../drive/MyDrive/pol/G_{sys.argv[2]}.pth", net_g, None)
+_ = utils.load_checkpoint(f"./model/{sys.argv[1]}/G_{sys.argv[2]}.pth", net_g, None)
 
-output_dir = f'../vitsoutput/{sys.argv[1]}'
+output_dir = f'./vitsoutput/{sys.argv[1]}'
 os.makedirs(output_dir, exist_ok=True)
 
-for idx in range(45):
+n_speakers = hps.data.n_speakers
+
+for idx in range(n_speakers):
     sid = torch.LongTensor([idx]).cuda()
     stn_tst = get_text("가장 밝게 빛나는 순간은 주위의 모든 것이 가장 어두울 때이다.", hps)
     with torch.no_grad():
