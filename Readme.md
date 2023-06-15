@@ -104,7 +104,7 @@ python main_resume.py {model_name}
 After the model has been trained, you can generate predictions by using the following command, replacing {model_name} and {model_step} with your respective values:
 
 ```sh
-python ./vits/inferencems.py {model_name} {model_step}
+python inference.py {model_name} {model_step}
 ```
 
 Or check ./vits/inference.ipynb.
