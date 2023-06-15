@@ -24,7 +24,7 @@ def get_text(text, hps):
     text_norm = torch.LongTensor(text_norm)
     return text_norm
 
-hps = utils.get_hparams_from_file(f"./datasets/{sys.argv[1]}.json")
+hps = utils.get_hparams_from_file(f"./models/{sys.argv[1]}/config.json")
 
 net_g = SynthesizerTrn(
     len(symbols),
@@ -34,7 +34,7 @@ net_g = SynthesizerTrn(
     **hps.model).cuda()
 _ = net_g.eval()
 
-_ = utils.load_checkpoint(f"./model/{sys.argv[1]}/G_{sys.argv[2]}.pth", net_g, None)
+_ = utils.load_checkpoint(f"./models/{sys.argv[1]}/G_{sys.argv[2]}.pth", net_g, None)
 
 output_dir = f'./vitsoutput/{sys.argv[1]}'
 os.makedirs(output_dir, exist_ok=True)
