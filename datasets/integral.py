@@ -556,7 +556,7 @@ def main():
     third_code(sys.argv[1], sys.argv[2])
     print("All .wav files have been processed.\n")
 
-    print("Running vits preprocess.py...")
+    print("Running vits preprocess.py(Korean text cleaning can take some time)...")
     time.sleep(1.5)
     vits_preproess_code(sys.argv[1], sys.argv[2])
     print("The cleaner has successfully processed the text file.\n")
