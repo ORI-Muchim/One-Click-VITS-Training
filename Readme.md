@@ -84,10 +84,16 @@ One-Click-VITS-Training
 
 ## Usage
 
-To start training, use the following command, replacing {language}, {model_name}, and {sample_rate} with your respective values:
+To start this tool, use the following command, replacing {language}, {model_name}, and {sample_rate} with your respective values:
 
 ```sh
 python main.py {language} {model_name} {sample_rate}
+```
+
+If the data configuration is complete and you want to resume training, enter this code:
+
+```sh
+python main_resume.py {model_name}
 ```
 
 ---
