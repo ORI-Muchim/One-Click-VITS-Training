@@ -75,6 +75,7 @@ One-Click-VITS-Training
 │       └integral.py
 │
 ├────vits
+├────main.py
 ├────Readme.md
 └────requirements.txt
 ```
