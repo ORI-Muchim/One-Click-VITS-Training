@@ -94,7 +94,7 @@ To start this tool, use the following command, replacing {language}, {model_name
 python main.py {language} {model_name} {sample_rate}
 ```
 
-For those with low specifications, please use this code:
+For those with low specifications(VRAM < 12GB), please use this code:
 
 ```sh
 python main_low.py {language} {model_name} {sample_rate}
