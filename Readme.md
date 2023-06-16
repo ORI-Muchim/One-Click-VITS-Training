@@ -74,7 +74,8 @@ One-Click-VITS-Training
 │       └───speaker1
 │       │    ├───1.mp3
 │       │    └───1.wav
-│       └integral.py
+│       ├integral.py
+│       └integral_low.py
 │
 ├────vits
 ├────main.py
