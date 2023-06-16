@@ -14,8 +14,8 @@ This tool allows you to complete the entire process of VITS (Data Preprocessing 
 - [Reference](#Reference)
 
 ## Prerequisites
-- A Windows/Linux system with a minimum of 16GB RAM.
-- A GPU with at least 12GB of VRAM.
+- A Windows/Linux system with a minimum of `16GB` RAM.
+- A GPU with at least `12GB` of VRAM.
 - Python >= 3.8
 - Anaconda installed.
 - PyTorch installed.
