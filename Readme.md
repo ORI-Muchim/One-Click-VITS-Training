@@ -89,7 +89,7 @@ This is just an example, and it's okay to add more speakers.
 
 ## Usage
 
-To start this tool, use the following command, replacing {language}, {model_name}, and {sample_rate} with your respective values:
+To start this tool, use the following command, replacing {language}, {model_name}, and {sample_rate} with your respective values({language: ko, ja, en, zh} / {sample_rate: 22050 / 44100}):
 
 ```sh
 python main.py {language} {model_name} {sample_rate}
