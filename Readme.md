@@ -19,10 +19,19 @@ This tool allows you to complete the entire process of VITS (Data Preprocessing 
 - Python >= 3.8
 - Anaconda installed.
 - PyTorch installed.
+- CUDA 11.x installed.
+- Zlib DLL installed.
 
+Pytorch install command:
 ```sh
 pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
+
+CUDA install:
+`https://developer.nvidia.com/cuda-11-7-0-download-archive`
+
+Zlib DLL install:
+`https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-zlib-windows`
 
 ---
 
