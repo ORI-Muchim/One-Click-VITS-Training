@@ -230,6 +230,9 @@ def second_code():
 
     for folder in sub_folders:
         wavs_folder_path = os.path.join(folder, 'wavs')
+        if os.path.exists(wavs_folder_path):
+            continue
+
         wav_files = glob.glob(os.path.join(wavs_folder_path, '*.wav'))
 
         for index, wav_file in enumerate(wav_files, start=1):
