@@ -30,8 +30,13 @@ def preprocessing_code(arg3):
                 continue
 
             wavs_dir = os.path.join(subdir, "wavs")
-            if not os.path.exists(wavs_dir):
-                os.makedirs(wavs_dir)
+
+            # Skip the conversion if 'wavs' directory exists
+            if os.path.exists(wavs_dir):
+                print(f"'wavs' directory already exists in {subdir}. Skipping conversion.")
+                continue
+
+            os.makedirs(wavs_dir)
 
             for file in files:
                 if file.endswith(".mp3"):
@@ -53,6 +58,7 @@ def preprocessing_code(arg3):
 
     root_dir = "./"
     convert_mp3_to_wav(root_dir)
+
 
 
 
