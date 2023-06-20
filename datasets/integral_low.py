@@ -324,8 +324,6 @@ def third_code(arg1, arg2):
                 file.write(modified_line)
 
 
-    main()
-
 
 
 def fourth_code():
