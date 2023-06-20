@@ -127,7 +127,7 @@ python inference.py {model_name} {model_step}
 
 Or check ./vits/inference.ipynb.
 
-If you want to change the example text used in the reference, modify `./vits/inferrencems.py` `text` part.
+If you want to change the example text used in the reference, modify `./vits/inferencems.py` `text` part.
 
 ---
 
