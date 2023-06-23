@@ -11,7 +11,7 @@ This tool allows you to complete the entire process of VITS (Data Preprocessing 
 - [Usage](#usage)
 - [Inference](#inference)
 - [Changes](#Changes)
-- [Reference](#Reference)
+- [References](#References)
 
 ## Prerequisites
 - A Windows/Linux system with a minimum of `16GB` RAM.
