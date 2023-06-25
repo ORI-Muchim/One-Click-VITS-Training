@@ -27,11 +27,14 @@ Pytorch install command:
 pip install torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
 ```
 
-CUDA 11.7 install:
+CUDA 11.7 Install:
 `https://developer.nvidia.com/cuda-11-7-0-download-archive`
 
-Zlib DLL install:
+Zlib DLL Install:
 `https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-zlib-windows`
+
+Install pyopenjtalk Manually:
+`pip install -U pyopenjtalk --no-build-isolation`
 
 ---
 
