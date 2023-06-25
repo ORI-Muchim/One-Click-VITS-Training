@@ -279,12 +279,7 @@ def third_code(arg1, arg2):
                             ),
                         )
                         text = ' '.join([s.text for s in segments]).strip()
-                        detected_lang = info.language
 
-                    if (arg1 == "ko" and detected_lang != "ko") or (arg1 == "jp" and detected_lang != "jp") or (arg1 == "en" and detected_lang != "en") or (arg1 == "zh" and detected_lang != "zh"):
-                        continue
-
-                    else:
                         modified_path = "../datasets" + f"{wav_folder[1:]}/{wav_file}".replace("\\", "/")
                         print(f"{modified_path}|{speaker_id}|{text}")
                         f.writelines(f"{modified_path}|{speaker_id}|{text}\n")
