@@ -6,7 +6,6 @@ def main():
         print("Usage: python main.py {model_name}")
         sys.exit(1)
 
-
     model_name = sys.argv[1]
     model_step = sys.argv[2]
 
