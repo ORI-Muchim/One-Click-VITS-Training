@@ -262,6 +262,7 @@ def third_code(arg1, arg2):
         device='cuda',
         compute_type='float16',
     )
+    lang_lst = [{arg1}]
 
     def process_wav_files(speaker_id, wav_folder, transcript_file, top_folder):
         with open(transcript_file, "w", encoding='utf-8') as f:
@@ -270,7 +271,7 @@ def third_code(arg1, arg2):
                     file_path = os.path.join(wav_folder, wav_file)
                     with open(file_path, "rb") as audio_file:
                         # replaced model.transcribe(file_path) with the provided transcribe method
-                        segments = model.transcribe(
+                        segments, info = model.transcribe(
                             file_path,
                             vad_filter=True,
                             vad_parameters=dict(
@@ -279,11 +280,10 @@ def third_code(arg1, arg2):
                         )
                         text = ' '.join([s.text for s in segments]).strip()
 
-                        modified_path = "../datasets" + f"{wav_folder[1:]}/{wav_file}".replace("\\", "/")
-                        print(f"{modified_path}|{speaker_id}|{text}")
-                        f.writelines(f"{modified_path}|{speaker_id}|{text}\n")
+                        print(f"{wav_folder}/{wav_file}|{speaker_id}|{text}")
+                        f.writelines(f"{wav_folder}/{wav_file}|{speaker_id}|{text}\n")
                         with open(os.path.join(top_folder, f"{arg2}_train.txt"), "a", encoding='utf-8') as all_transcript_file:
-                            all_transcript_file.writelines(f"{modified_path}|{speaker_id}|{text}\n")
+                            all_transcript_file.writelines(f"{wav_folder}/{wav_file}|{speaker_id}|{text}\n")
 
     def main():
         top_folder = "./"
@@ -314,8 +314,7 @@ def third_code(arg1, arg2):
 
         with open(output_file, 'w', encoding='utf-8') as file:
             for line in selected_lines:
-                modified_line = "." + line[1:].replace("\\", "/")
-                file.write(modified_line)
+                file.write(line)
 
     main()
 
