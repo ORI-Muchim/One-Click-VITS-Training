@@ -262,7 +262,6 @@ def third_code(arg1, arg2):
         device='cuda',
         compute_type='float16',
     )
-    lang_lst = [{arg1}]
 
     def process_wav_files(speaker_id, wav_folder, transcript_file, top_folder):
         with open(transcript_file, "w", encoding='utf-8') as f:
@@ -271,7 +270,7 @@ def third_code(arg1, arg2):
                     file_path = os.path.join(wav_folder, wav_file)
                     with open(file_path, "rb") as audio_file:
                         # replaced model.transcribe(file_path) with the provided transcribe method
-                        segments, info = model.transcribe(
+                        segments = model.transcribe(
                             file_path,
                             vad_filter=True,
                             vad_parameters=dict(
@@ -317,7 +316,9 @@ def third_code(arg1, arg2):
             for line in selected_lines:
                 modified_line = "." + line[1:].replace("\\", "/")
                 file.write(modified_line)
-                
+
+    main()
+
 
 
 
