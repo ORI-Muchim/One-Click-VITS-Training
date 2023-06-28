@@ -256,7 +256,6 @@ def second_code():
 
 
 def third_code(arg1, arg2):
-
     model = WhisperModel(
         model_size_or_path='large-v2',
         device='cuda',
@@ -270,7 +269,6 @@ def third_code(arg1, arg2):
                 if wav_file.endswith(".wav"):
                     file_path = os.path.join(wav_folder, wav_file)
                     with open(file_path, "rb") as audio_file:
-                        # replaced model.transcribe(file_path) with the provided transcribe method
                         segments, info = model.transcribe(
                             file_path,
                             vad_filter=True,
@@ -279,11 +277,12 @@ def third_code(arg1, arg2):
                             ),
                         )
                         text = ' '.join([s.text for s in segments]).strip()
-
-                        print(f"{wav_folder}/{wav_file}|{speaker_id}|{text}")
-                        f.writelines(f"{wav_folder}/{wav_file}|{speaker_id}|{text}\n")
+                        
+                        modified_path = "../datasets" + f"{wav_folder[1:]}/{wav_file}".replace("\\", "/")
+                        print(f"{modified_path}|{speaker_id}|{text}")
+                        f.writelines(f"{modified_path}|{speaker_id}|{text}\n")
                         with open(os.path.join(top_folder, f"{arg2}_train.txt"), "a", encoding='utf-8') as all_transcript_file:
-                            all_transcript_file.writelines(f"{wav_folder}/{wav_file}|{speaker_id}|{text}\n")
+                            all_transcript_file.writelines(f"{modified_path}|{speaker_id}|{text}\n")
 
     def main():
         top_folder = "./"
@@ -314,7 +313,8 @@ def third_code(arg1, arg2):
 
         with open(output_file, 'w', encoding='utf-8') as file:
             for line in selected_lines:
-                file.write(line)
+                modified_line = "." + line[1:].replace("\\", "/")
+                file.write(modified_line)
 
     main()
 
@@ -534,6 +534,11 @@ def rename_config_json(arg2):
 
 def main():
 
+    print("Running Audio Files Rename...")
+    time.sleep(1.5)
+    second_code()
+    print("All .wav files have been renamed.\n")
+
     print("Running Audio Convertion(.mp3 to .wav)")
     time.sleep(1.5)
     preprocessing_code(sys.argv[3])
@@ -543,11 +548,6 @@ def main():
     time.sleep(1.5)
     first_code()
     print("All .wav files have been seperated.\n")
-
-    print("Running Audio Files Rename...")
-    time.sleep(1.5)
-    second_code()
-    print("All .wav files have been renamed.\n")
 
     print("Running Whisper ASR...")
     time.sleep(0.5)
