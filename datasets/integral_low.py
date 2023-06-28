@@ -233,25 +233,18 @@ def first_code():
 
 def second_code():
 
-    parent_folder_path = './'
+    def rename_files_in_subfolders(parent_directory):
+        for foldername in glob.glob(parent_directory + '/**', recursive=True):
+            current_number = 0
+            for filename in glob.glob(os.path.join(foldername, '*.wav')):
+                new_filename = f"{current_number:05}.wav"
+                new_filepath = os.path.join(foldername, new_filename)
 
-    sub_folders = [f.path for f in os.scandir(parent_folder_path) if f.is_dir()]
+                os.rename(filename, new_filepath)
+                current_number += 1
 
-    for folder in sub_folders:
-        wavs_folder_path = os.path.join(folder, 'wavs')
-        if os.path.exists(wavs_folder_path):
-            continue
-
-        wav_files = glob.glob(os.path.join(wavs_folder_path, '*.wav'))
-
-        for index, wav_file in enumerate(wav_files, start=1):
-            new_file_name = f"{index:04d}.wav"
-
-            new_file_path = os.path.join(wavs_folder_path, new_file_name)
-
-            shutil.move(wav_file, new_file_path)
-
-            print(f"Renamed '{wav_file}' to '{new_file_path}'")
+    parent_directory = './'
+    rename_files_in_subfolders(parent_directory)
 
 
 
