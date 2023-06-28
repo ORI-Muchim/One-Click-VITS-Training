@@ -464,35 +464,30 @@ def sixth_code(arg1, arg2):
         json.dump(config, file, ensure_ascii=False, indent=2)
 
 
-def vits_preproess_code(arg1, arg2):
+def vits_preprocess_code(arg1, arg2):
+    if arg1 not in ["ko", "ja", "en", "zh"]:
+        return
+
+    script_path = "../vits/preprocess.py"
+
+    filelists_train = f'./{arg2}_train.txt'
+    filelists_val = f'./{arg2}_val.txt'
+
     if arg1 == "ko":
         text_cleaners = "korean_cleaners"
     elif arg1 == "ja":
         text_cleaners = "japanese_cleaners2"
     elif arg1 == "en":
         text_cleaners = "cjke_cleaners2"
-    elif arg1 == "zh":
+    elif arg1 == "ja":
         text_cleaners = "cjke_cleaners2"
     else:
         return
     
-    script_path = "../vits/preprocess.py"
-
-    text_index = "2"
-    filelists_train = f'./{arg2}_train.txt'
-    filelists_val = f'./{arg2}_val.txt'
-    arg1 = text_cleaners
-
-    process = subprocess.Popen(["python", script_path, "--text_index", text_index, "--filelists", filelists_train, filelists_val, "--text_cleaners", arg1], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
-
-    while True:
-        output = process.stdout.readline()
-        if output == '' and process.poll() is not None:
-            break
-        if output:
-            print(output.strip())
-
-    return process.poll()
+    command = f"python {script_path} --filelists {filelists_train} {filelists_val} --text_cleaners {text_cleaners}"
+    
+    print(f"Executing command: {command}")
+    os.system(command)
 
 
 
