@@ -165,12 +165,6 @@ def first_code():
             )
 
 
-    def normalize_audio(audio_path, output):
-        a = os.popen(f'ffmpeg -i {audio_path} -af "volumedetect" -f null /dev/null 2>&1 | findstr "max_volume"').read().lower() \
-            .split('max_volume:')[1].split('db')[0]
-        os.system(f'ffmpeg -i {audio_path} -af "volume={-float(a)}dB" {output}')
-
-
     def process_folders(parent_folder):
     # If there's any audio file with a length of 1 minute or less, exit the script
         if check_audio_length(parent_folder):
