@@ -92,12 +92,6 @@ def first_code():
 
 
     def slicing(file_location, output_dir):
-        '''
-        Last Acceptable Values
-        min_silence_length = 0.3
-        silence_threshold = 1e-3
-        step_duration = 0.03/10
-        '''
         # Change the arguments and the input file here
         input_file = file_location
         output_dir = output_dir
