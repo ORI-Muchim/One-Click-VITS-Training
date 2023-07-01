@@ -206,9 +206,6 @@ def first_code():
                 temp_wav_loc = os.path.join(temp_folder, temp_wav_path)
                 shutil.move(temp_wav_loc, os.path.join(wav_folder, temp_wav_path))
         
-        # Remove the original wav file
-        os.remove(wav_loc)
-        
         # Remove the temp folder
         if os.path.exists(temp_folder):
             shutil.rmtree(temp_folder)
