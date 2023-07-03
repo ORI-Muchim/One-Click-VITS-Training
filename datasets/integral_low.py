@@ -262,6 +262,9 @@ def third_code(arg1, arg2):
                         )
                         text = ' '.join([s.text for s in segments]).strip()
                         
+                        if arg1 in ['en', 'zh']:
+                            text = f'[{arg1.upper()}] {text} [{arg1.upper()}]'
+                        
                         modified_path = "../datasets" + f"{wav_folder[1:]}/{wav_file}".replace("\\", "/")
                         print(f"{modified_path}|{speaker_id}|{text}")
                         f.writelines(f"{modified_path}|{speaker_id}|{text}\n")
