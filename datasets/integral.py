@@ -485,7 +485,7 @@ def write_symbols(file_path, language):
             f.write("_pad        = '_'\n")
             f.write("_punctuation = ',.!?-~…'\n")
             f.write("_letters = 'AEINOQUabdefghijkmnoprstuvwyzʃʧʦ↓↑ '\n\n\n")
-        elif language == 'en' and language == 'zh':
+        elif language == 'en' or language == 'zh':
             f.write("# cjke_cleaners2")
             f.write("_pad        = '_'\n")
             f.write("_punctuation = ',.!?-~…'\n")
