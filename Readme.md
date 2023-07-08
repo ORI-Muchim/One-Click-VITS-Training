@@ -90,6 +90,9 @@ One-Click-VITS-Training
 │       └integral_low.py
 │
 ├────vits
+├────inference.py
+├────main_low.py
+├────main_resume.py
 ├────main.py
 ├────Readme.md
 └────requirements.txt
