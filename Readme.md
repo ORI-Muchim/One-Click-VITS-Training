@@ -5,14 +5,14 @@ This tool allows you to complete the entire process of VITS (Data Preprocessing 
 
 
 ## Table of Contents 
-- [Structure](#Structure)
-- [Prerequisites](#Prerequisites)
-- [Installation](#Installation)
-- [Prepare_Datasets](#Prepare_Datasets)
-- [Usage](#Usage)
-- [Inference](#Inference)
-- [Changes](#Changes)
-- [References](#References)
+- [Structure](#structure)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Prepare_Datasets](#prepare_Datasets)
+- [Usage](#usage)
+- [Inference](#inference)
+- [Changes](#changes)
+- [References](#references)
 
 ## Structure
 ![Sample Output](./src/One_Click_VITS_Training_Flowgraph.png)
