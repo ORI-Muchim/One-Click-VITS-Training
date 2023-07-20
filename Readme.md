@@ -8,7 +8,7 @@ This tool allows you to complete the entire process of VITS (Data Preprocessing 
 - [Structure](#structure)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Prepare_Datasets](#prepare_Datasets)
+- [Prepare_Datasets](#prepare_datasets)
 - [Usage](#usage)
 - [Inference](#inference)
 - [Changes](#changes)
