@@ -21,7 +21,7 @@ from langdetect import detect
 
 
 def preprocessing_code(arg3):
-    def convert_mp3_to_wav(root_dir):
+    def convert_audio(root_dir):
         if not os.path.isdir(root_dir):
             raise ValueError("The provided root directory does not exist.")
 
@@ -55,7 +55,7 @@ def preprocessing_code(arg3):
                         print(f"Error while converting {src_filepath} to {wav_filepath}: {e}")
 
     root_dir = "./"
-    convert_mp3_to_wav(root_dir)
+    convert_audio(root_dir)
 
 
 
