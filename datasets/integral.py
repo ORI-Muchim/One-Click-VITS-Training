@@ -170,7 +170,6 @@ def first_code():
 
 
     def process_folders(parent_folder):
-    # If there's any audio file with a length of 1 minute or less, exit the script
         if check_audio_length(parent_folder):
             print("An audio file with a length of 1 minute or less was found. Exiting...")
             time.sleep(1.5)
@@ -207,16 +206,13 @@ def first_code():
         rmtree(temp_folder, ignore_errors=True)
         os.makedirs(temp_folder, exist_ok=True)
 
-        # Call slicing function and save the processed file in the temp_folder
         slicing(wav_loc, temp_folder)
-        
-        # Move the processed file(s) from temp_folder to the wav_folder
+
         for temp_wav_path in os.listdir(temp_folder):
             if temp_wav_path.endswith(".wav"):
                 temp_wav_loc = os.path.join(temp_folder, temp_wav_path)
                 shutil.move(temp_wav_loc, os.path.join(wav_folder, temp_wav_path))
-        
-        # Remove the temp folder
+
         if os.path.exists(temp_folder):
             shutil.rmtree(temp_folder)
 
