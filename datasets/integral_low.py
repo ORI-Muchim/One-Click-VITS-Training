@@ -21,7 +21,16 @@ from langdetect import detect
 
 
 def preprocessing_code(arg3):
-    def convert_mp3_to_wav(root_dir):
+    def get_sample_rate(wav_path):
+        cmd = ["ffprobe", "-v", "error", "-select_streams", "a:0", "-show_entries", "stream=sample_rate", "-of", "default=noprint_wrappers=1:nokey=1", wav_path]
+        try:
+            sample_rate = subprocess.check_output(cmd)
+            return int(sample_rate)
+        except Exception as e:
+            print(f"Error getting sample rate for {wav_path}: {e}")
+            return None
+
+    def convert_audio(root_dir):
         if not os.path.isdir(root_dir):
             raise ValueError("The provided root directory does not exist.")
 
@@ -36,32 +45,33 @@ def preprocessing_code(arg3):
 
             wavs_dir = os.path.join(subdir, "wavs")
 
-            if os.path.exists(wavs_dir):
-                print(f"'wavs' directory already exists in {subdir}. Skipping conversion.")
-                continue
-
-            os.makedirs(wavs_dir)
+            if not os.path.exists(wavs_dir):
+                os.makedirs(wavs_dir)
 
             for file in files:
-                if file.endswith(".mp3"):
-                    mp3_filepath = os.path.join(subdir, file)
+                if file.endswith(".mp3") or file.endswith(".wav"):
+                    src_filepath = os.path.join(subdir, file)
                     wav_filename = os.path.splitext(file)[0] + ".wav"
                     wav_filepath = os.path.join(wavs_dir, wav_filename)
-                    print(f"Converting {mp3_filepath} to {wav_filepath}...")
 
-                    try:
-                        subprocess.run(["ffmpeg", "-i", mp3_filepath, "-ar", str(arg3), "-ac", "1", wav_filepath], check=True)
-                    except subprocess.CalledProcessError as e:
-                        print(f"Error while converting {mp3_filepath} to {wav_filepath}: {e}")
+                    should_convert = not os.path.exists(wav_filepath)
 
-                elif file.endswith(".wav"):
-                    wav_filepath = os.path.join(subdir, file)
-                    dest_filepath = os.path.join(wavs_dir, file)
-                    print(f"Moving {wav_filepath} to {dest_filepath}...")
-                    shutil.move(wav_filepath, dest_filepath)
+                    if file.endswith(".wav") and not should_convert:
+                        if get_sample_rate(src_filepath) != arg3:
+                            should_convert = True
+
+                    if should_convert:  
+                        print(f"Converting {src_filepath} to {wav_filepath}...")
+
+                        try:
+                            subprocess.run(["ffmpeg", "-i", src_filepath, "-ar", str(arg3), "-ac", "1", wav_filepath], check=True)
+                        except subprocess.CalledProcessError as e:
+                            print(f"Error while converting {src_filepath} to {wav_filepath}: {e}")
+                        except Exception as e:
+                            print(f"An error occurred: {e}")
 
     root_dir = "./"
-    convert_mp3_to_wav(root_dir)
+    convert_audio(root_dir)
 
 
 
