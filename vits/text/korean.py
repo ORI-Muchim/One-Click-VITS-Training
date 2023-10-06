@@ -1,6 +1,8 @@
 import re
 from jamo import h2j, j2hcj
 import ko_pron
+from g2pk2 import G2p
+#from cleaners import fix_g2pk2_error
 
 
 # This is a list of Korean classifiers preceded by pure Korean numerals.
@@ -84,6 +86,21 @@ _ipa_to_lazy_ipa = [(re.compile('%s' % x[0], re.IGNORECASE), x[1]) for x in [
     ('\u0320',''),
     ('\u0339','')
 ]]
+
+
+def fix_g2pk2_error(text):
+    new_text = ""
+    i = 0
+    while i < len(text) - 4:
+        if (text[i:i+3] == 'ㅇㅡㄹ' or text[i:i+3] == 'ㄹㅡㄹ') and text[i+3] == ' ' and text[i+4] == 'ㄹ':
+            new_text += text[i:i+3] + ' ' + 'ㄴ'
+            i += 5
+        else:
+            new_text += text[i]
+            i += 1
+
+    new_text += text[i:]
+    return new_text
 
 
 def latin_to_hangul(text):
@@ -206,5 +223,10 @@ def korean_to_lazy_ipa(text):
 
 
 def korean_to_ipa(text):
+    text = latin_to_hangul(text)
+    text = number_to_hangul(text)
+    g2p = G2p()
+    text = g2p(text)
+    text = fix_g2pk2_error(text)
     text = korean_to_lazy_ipa(text)
     return text.replace('ʧ','tʃ').replace('ʥ','dʑ')
