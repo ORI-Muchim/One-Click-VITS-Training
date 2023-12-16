@@ -41,12 +41,15 @@ os.makedirs(output_dir, exist_ok=True)
 
 n_speakers = hps.data.n_speakers
 
-for idx in range(n_speakers):
+speaker_ids = [sid for sid, name in enumerate(hps.speakers) if name != "None"]
+speakers = [name for sid, name in enumerate(hps.speakers) if name != "None"]
+
+for idx, speaker in enumerate(speakers):
     sid = torch.LongTensor([idx]).cuda()
     stn_tst = get_text("가장 밝게 빛나는 순간은 주위의 모든 것이 가장 어두울 때이다.", hps)
     with torch.no_grad():
         x_tst = stn_tst.cuda().unsqueeze(0)
         x_tst_lengths = torch.LongTensor([stn_tst.size(0)]).cuda()
         audio = net_g.infer(x_tst, x_tst_lengths, sid=sid, noise_scale=.667, noise_scale_w=0.8, length_scale=1)[0][0,0].data.cpu().float().numpy()
-    write(f'{output_dir}/output{idx}.wav', hps.data.sampling_rate, audio)
-    print(f'{output_dir}/output{idx}.wav Generated!')
+    write(f'{output_dir}/{speaker}.wav', hps.data.sampling_rate, audio)
+    print(f'{output_dir}/{speaker}.wav Generated!')
