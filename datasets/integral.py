@@ -466,7 +466,7 @@ def vits_preprocess_code(arg1, arg2):
         text_cleaners = "japanese_cleaners2"
     if arg1 == "en":
         text_cleaners = "cjke_cleaners2"
-    if arg1 == "ja":
+    if arg1 == "zh":
         text_cleaners = "cjke_cleaners2"
     
     command = f"python {script_path} --filelists {filelists_train} {filelists_val} --text_cleaners {text_cleaners}"
