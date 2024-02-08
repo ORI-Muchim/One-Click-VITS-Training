@@ -472,7 +472,7 @@ def vits_preprocess_code(arg1, arg2):
         text_cleaners = "japanese_cleaners2"
     elif arg1 == "en":
         text_cleaners = "cjke_cleaners2"
-    elif arg1 == "ja":
+    elif arg1 == "zh":
         text_cleaners = "cjke_cleaners2"
     else:
         return
