@@ -241,7 +241,7 @@ def second_code():
 
 def third_code(arg1, arg2):
     model = WhisperModel(
-        model_size_or_path='large-v2',
+        model_size_or_path='large-v3',
         device='cuda',
         compute_type='float16',
     )
